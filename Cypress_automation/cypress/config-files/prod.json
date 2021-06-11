@@ -1,0 +1,11 @@
+{
+    "baseUrl": "https://ms.healthline.com", 
+    "user": "boss88002",
+    "experimentalShadowDomSupport": true,
+    "experimentalNetworkStubbing": true,
+    "pageLoadTimeout": 100000,
+    "chromeWebSecurity": false,
+    "testFiles": [
+      "ms-prod-combined.spec.js"
+        ]
+   }
