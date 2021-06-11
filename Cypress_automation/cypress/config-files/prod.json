@@ -6,6 +6,8 @@
     "pageLoadTimeout": 100000,
     "chromeWebSecurity": false,
     "testFiles": [
-      "ms-prod-combined.spec.js"
+      "ms-prod-combined.spec.js",
+      "ms-web-notification.spec.js",
+      "ms-web-post-to-a-group.spec.js"
         ]
    }
