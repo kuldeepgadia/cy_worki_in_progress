@@ -57,7 +57,7 @@ it('post to a group', () => {
 
   cy.get('together-post-to-group', { includeShadowDom: true })
   .find('.groups-list-container', { includeShadowDom: true })
-  .find('together-group-list-item', { includeShadowDom: true }).eq(10).click({force: true});
+  .find('together-group-list-item', { includeShadowDom: true }).eq(11).click({force: true});
   
 
    cy.get('together-post-to-group', { includeShadowDom: true })
