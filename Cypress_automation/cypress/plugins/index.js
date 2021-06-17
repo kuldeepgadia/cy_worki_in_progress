@@ -18,7 +18,7 @@
  const {GoogleSocialLogin} = require('cypress-social-logins').plugins
  const fs = require('fs-extra');
  const path = require('path');
- 
+ const { renameSync } = require('fs');
 
  function getConfigurationByFile(file) {
    const pathToConfigFile = path.resolve(
@@ -34,8 +34,15 @@
   on('task', {
     GoogleSocialLogin: GoogleSocialLogin
   });
+
+  on('after:screenshot', ({ path }) => {
+    renameSync(path, path.replace(/ \(\d*\)/i, ''));
+  });
    const file = config.env.fileConfig || 'development';
  
    return getConfigurationByFile(file);
 
  };
+
+ 
+
