@@ -77,6 +77,127 @@ Cypress.Commands.add('loginclick', () => {
   .find('together-highlight-text', { includeShadowDom: true })
   .find('.together-highlight-text', { includeShadowDom: true ,timeout: 10000 }).should('be.visible')
   .contains('Log In') .click({force: true});
-  cy.wait(5000);
+ // cy.wait(5000);
   cy.location('href').should('contains', Cypress.config('baseUrl')+'/signin/SIGNIN');
+})
+
+Cypress.Commands.add('posttogroup', (custmsg) => {
+cy.wait(5000);
+cy
+.get('together-group-list-item', { includeShadowDom: true })
+.find('.group-list-item-label', { includeShadowDom: true })
+.contains('Healthline').click({force: true});
+
+cy.wait(3000);
+
+cy
+.get('together-response-input', { includeShadowDom: true })
+.find('.response', { includeShadowDom: true })
+.click(); 
+
+cy
+.get('together-response-input', { includeShadowDom: true })
+.find('.response', { includeShadowDom: true })
+.type('{selectall}{backspace}{selectall}{backspace}', { force: true }).type(custmsg, { force: true });
+
+cy
+.get('.post-button', { includeShadowDom: true })
+.find('.together-highlight-text', { includeShadowDom: true })
+.contains('Post')
+.click({force: true});
+
+
+cy.wait(3000);
+})
+
+Cypress.Commands.add('signup', (custname) => {
+  cy
+  .get('ion-app')
+  .find('app-header', { includeShadowDom: true })
+  .find('header', { includeShadowDom: true })
+  .find('.right-pane')
+  .find('together-button', { includeShadowDom: true })
+  .find('.together-button', { includeShadowDom: true })
+  .find('.button-text', { includeShadowDom: true,timeout: 10000 }).should('be.visible')
+  .contains('Sign up') .click({force: true});
+
+  cy
+   .get('app-registration', { includeShadowDom: true})
+   .find('.left-panel', { includeShadowDom: true,timeout: 10000 }).should('be.visible')
+   .find('.together-input-field', { includeShadowDom: true ,timeout: 10000 }).should('be.visible')
+   .find('.together-form-prompt', { includeShadowDom: true}).click({force: true});
+   cy.wait(1000);
+   cy
+   .get('app-registration', { includeShadowDom: true })
+   .find('.left-panel', { includeShadowDom: true })
+   .find('.together-input-field', { includeShadowDom: true })
+   .find('input', { includeShadowDom: true ,timeout: 10000 }).should('be.visible').type(custname+'@healthline.com');
+   //cy.wait(5000);
+   cy
+   .get('.together-input-container', { includeShadowDom: true })
+   .find('.input-button', { includeShadowDom: true ,timeout: 10000 }).should('be.visible')
+   .contains('Continue') .click({force: true});
+   cy.wait(5000);
+
+   cy
+   .get('app-registration.ion-page.hydrated.can-go-back', { includeShadowDom: true })
+   .find('.together-input-field', { includeShadowDom: true })
+   .find('span', { includeShadowDom: true})
+   .contains('Create a password (8+ characters)').click({force: true});
+
+   cy
+   .get('app-registration.ion-page.hydrated.can-go-back', { includeShadowDom: true })
+   .find('input[name="password"]', { includeShadowDom: true }).type('12345678');
+   
+   cy
+   .get('app-registration.ion-page.hydrated.can-go-back', { includeShadowDom: true })
+   .find('.together-input-field', { includeShadowDom: true})
+   .contains('username') .click({force: true});
+    
+   if(custname=="b"){
+     custname="UserB";
+   }
+    cy
+    .get('app-registration.ion-page.hydrated.can-go-back', { includeShadowDom: true })
+    .find('input[placeholder="Create a username"]', { includeShadowDom: true ,timeout: 10000 }).should('be.visible').type(custname);
+
+    
+    cy
+    .get('app-registration.ion-page.hydrated.can-go-back', { includeShadowDom: true })
+    .find('input[placeholder="Where do you call home?"]', { includeShadowDom: true }).click({force: true});
+
+    cy
+    .get('.single-select-menu-container', { includeShadowDom: true })
+    .find('.radio-item', { includeShadowDom: true ,timeout: 10000 }).should('be.visible').eq(0).click({force: true});
+
+    cy
+    .get('.checkbox-container', { includeShadowDom: true ,timeout: 10000 }).should('be.visible').click({force: true});
+
+    cy
+    .get('app-registration.ion-page.hydrated.can-go-back', { includeShadowDom: true })
+    .find('.together-button', { includeShadowDom: true,timeout: 10000 }).should('be.visible').click({force: true});
+    cy.wait(15000);
+
+})
+
+Cypress.Commands.add('deleteuser', () => {
+  cy.wait(5000);
+  cy
+  .get('together-group-list-item', { includeShadowDom: true })
+  .find('.group-list-item-label', { includeShadowDom: true })
+  .contains('Live Discussions').click({force: true});
+
+    cy
+    .get('.registered-options', { includeShadowDom: true })
+    .find('.delete-link .together-highlight-text', { includeShadowDom: true })
+    .contains('Delete Account').click({force: true});
+    cy.wait(15000);
+
+    cy
+    .get('.confirmation-footer > div', { includeShadowDom: true }).eq(1)
+    .should('contain','Delete account')
+    .invoke('show')
+    .click();
+    cy.wait(10000);
+
 })
