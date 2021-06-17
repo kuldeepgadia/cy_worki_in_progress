@@ -5,9 +5,11 @@
     "experimentalNetworkStubbing": true,
     "pageLoadTimeout": 100000,
     "chromeWebSecurity": false,
+    "trashAssetsBeforeRuns": true,
     "testFiles": [
       "ms-prod-combined.spec.js",
       "ms-web-notification.spec.js",
-      "ms-web-post-to-a-group.spec.js"
+      "ms-web-post-to-a-group.spec.js",
+      "ms-web-block.spec.js"
         ]
    }
