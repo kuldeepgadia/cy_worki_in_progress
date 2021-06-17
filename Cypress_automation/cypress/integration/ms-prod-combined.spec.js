@@ -78,15 +78,17 @@ it('Drill down to a Live Discussion Group Channel', () => {
 
 it('Feedcard Download prompt should display for Unregistered flow', () => {
    cy.wait(3000);
-   cy.get('main', { includeShadowDom: true }).scrollTo(900,890);
-   
+   cy.get('main', { includeShadowDom: true }).scrollTo(900,1150);
+  
    cy
    .get('together-download-card', { includeShadowDom: true })
    .find('.download-card-heading', { includeShadowDom: true })
    .should('contain', 'Download the MS Healthline app');
+   cy.screenshot('Feedcard Download prompt');
 });  
 
 it('Click Learn More link from Feedcard Download prompt', () => {
+   
    cy
    .get('together-download-card', { includeShadowDom: true })
    .find('.together-highlight-text', { includeShadowDom: true })
@@ -111,7 +113,7 @@ it('Click Learn More link from Feedcard Download prompt', () => {
    .get('app-learn-more', { includeShadowDom: true })
    .find('.together-button', { includeShadowDom: true,timeout: 10000 }).should('be.visible').click({force: true});
    cy.wait(3000);
-
+   cy.screenshot('Thanks for signing up');
    cy
    .get('app-learn-more', { includeShadowDom: true })
    .find('.signup-thanks-heading', { includeShadowDom: true })
@@ -157,6 +159,7 @@ it('Enter email ID and click Continue button on Signup - STEP_ONE page', () => {
    .find('.left-panel', { includeShadowDom: true })
    .find('.together-input-field', { includeShadowDom: true })
    .find('input', { includeShadowDom: true ,timeout: 10000 }).should('be.visible').type(custname+'@healthline.com');
+   cy.screenshot('registration_STEP_ONE');
    cy
    .get('.together-input-container', { includeShadowDom: true })
    .find('.input-button', { includeShadowDom: true ,timeout: 10000 }).should('be.visible')
@@ -201,7 +204,7 @@ it('Fill form fields on Signup - STEP_TWO page', () => {
 
     cy
     .get('.checkbox-container', { includeShadowDom: true ,timeout: 10000 }).should('be.visible').click({force: true});
-
+    cy.screenshot('registration_STEP_TWO');
     cy
     .get('app-registration.ion-page.hydrated.can-go-back', { includeShadowDom: true })
     .find('.together-button', { includeShadowDom: true,timeout: 10000 }).should('be.visible').click({force: true});
