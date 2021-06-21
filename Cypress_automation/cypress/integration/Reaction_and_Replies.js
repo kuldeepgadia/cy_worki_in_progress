@@ -2,7 +2,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
    return false;
  });
 
-var URL="https://ms.healthline.com/";
+var URL=Cypress.config('baseUrl');
 before( {
    viewportHeight: 768,
    viewportWidth: 1366,
