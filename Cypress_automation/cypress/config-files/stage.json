@@ -1,6 +1,5 @@
 {
     "baseUrl": "https://together-msb-stage-web.healthline.com", 
-    "user": "boss88002",
     "experimentalShadowDomSupport": true,
     "experimentalNetworkStubbing": true,
     "pageLoadTimeout": 100000,
@@ -11,7 +10,8 @@
       "ms-web-notification.spec.js",
       "ms-web-post-to-a-group.spec.js",
       "ms-web-block.spec.js",
-      "Reaction_and_Replies.js",
-      "ms-web-typeahead.spec.js"  
+      "ms-google-signup.spec.js",
+      "ms-web-group-title-desc-image.spec.js",
+      "ms-web-login-various-place.spec.js"
     ]
    }
