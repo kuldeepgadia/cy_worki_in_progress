@@ -12,6 +12,7 @@
       "ms-web-block.spec.js",
       "ms-google-signup.spec.js",
       "ms-web-group-title-desc-image.spec.js",
+      "ms-pin-live-post.spec.js",
       "ms-web-login-various-place.spec.js"
     ]
    }
